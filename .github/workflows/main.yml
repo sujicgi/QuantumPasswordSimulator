@@ -1,0 +1,15 @@
+name: Keep Streamlit App Awake
+
+on:
+  schedule:
+    # 매 4시간마다 자동으로 실행 (시간은 원하는 대로 조절 가능)
+    - cron: '0 */4 * * *'
+  workflow_dispatch: # 수동으로도 켤 수 있게 설정
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Visit Streamlit App
+        run: |
+          curl -I "https://sujicgi-quantumpasswordsimulator-app-ndu7bk.streamlit.app/"
